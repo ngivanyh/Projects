@@ -2,10 +2,24 @@
 	Property: Value;
 } */
 
+body {
+	background-image: url(image.jpg);
+	background-size: cover;
+}
+
 h2 {
-	color: red;
+	color: #AA4139;
+	text-align: center;
+	border: 5px solid rgba(255, 176, 170, 0.75);
+	cursor: pointer;
 }
 
 p {
 	color: green;
 }
+
+li {
+	list-style: none;
+	display: inline-block;
+}
+
