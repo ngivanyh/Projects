@@ -2,6 +2,10 @@
 	Property: Value;
 } */
 
+* {
+	text-align: right;
+}
+
 body {
 	background-image: url(image.jpg);
 	background-size: cover;
@@ -23,3 +27,10 @@ li {
 	display: inline-block;
 }
 
+.p_class_style {
+	border: 5px dashed green;
+}
+
+#div_with_content {
+	background: rgba(0, 0, 255, 0.2);
+}
