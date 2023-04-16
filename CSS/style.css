@@ -34,3 +34,7 @@ li {
 #div_with_content {
 	background: rgba(0, 0, 255, 0.2);
 }
+
+h2:hover {
+	color: green;
+}
