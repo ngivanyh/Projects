@@ -132,5 +132,4 @@ done.addEventListener('click', function() {
         // cal_p.innerText = week;
     })
 
-    // console.log(cal);
 });
