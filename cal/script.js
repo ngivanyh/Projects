@@ -1,6 +1,6 @@
-const specific_date = new Date('2023-04-01');
+// const specific_date = new Date('2023-04-01');
 
-const month = [];
+const cal = [];
 
 const getDays = (year, month) => {
     let days = 0;
@@ -35,7 +35,7 @@ const getDays = (year, month) => {
 const push_zero = (total) => {
     let push_times = 0;
     while (push_times != total) {
-        month.push(0);
+        cal.push(0);
         push_times += 1;
     }
 } 
@@ -43,37 +43,94 @@ const push_zero = (total) => {
 const pushUntilFull = (count, totalDays) => {
     while (count != totalDays) {
         count += 1;
-        month.push(count);
+        cal.push(count);
     }
 }
 
-const append = (day_cnt) => {
+const append = (day_cnt, spe_date) => {
     let cnt = 0;
-    if (specific_date.getDay() === 0) {
+    if (spe_date.getDay() === 0) {
         pushUntilFull(cnt, day_cnt);
-    } else if (specific_date.getDay() === 1) {
+    } else if (spe_date.getDay() === 1) {
         push_zero(1);
         pushUntilFull(cnt, day_cnt);
-    } else if (specific_date.getDay() === 2) {
+    } else if (spe_date.getDay() === 2) {
         push_zero(2);
         pushUntilFull(cnt, day_cnt);
-    } else if (specific_date.getDay() === 3) {
+    } else if (spe_date.getDay() === 3) {
         push_zero(3);
         pushUntilFull(cnt, day_cnt);
-    } else if (specific_date.getDay() === 4) {
+    } else if (spe_date.getDay() === 4) {
         push_zero(4);
         pushUntilFull(cnt, day_cnt);
-    } else if (specific_date.getDay() === 5) {
+    } else if (spe_date.getDay() === 5) {
         push_zero(5);
         pushUntilFull(cnt, day_cnt);
-    } else if (specific_date.getDay() === 6) {
+    } else if (spe_date.getDay() === 6) {
         push_zero(6);
         pushUntilFull(cnt, day_cnt);
     }
 }
 
-var noOfDays = getDays(2023, 4);
+// var noOfDays = getDays(2023, 4);
 
-append(noOfDays);
+// append(noOfDays);
 
-console.log(month);
+// console.log(month);
+
+const done = document.getElementById("btn");
+const usr_year = document.getElementById("year");
+const user_month = document.getElementById("month");
+const cal_head = document.getElementById("cal_header");
+const cal_1 = document.getElementById("cal_1");
+const cal_2 = document.getElementById("cal_2");
+const cal_3 = document.getElementById("cal_3");
+const cal_4 = document.getElementById("cal_4");
+const cal_5 = document.getElementById("cal_5");
+
+done.addEventListener('click', function() {
+    let year = usr_year.value;
+    let month = user_month.value;
+    let output = year.toString() + "/" + month.toString();
+
+    cal_head.innerText = output;
+
+    let specific_date_str = "";
+
+    if (month > 9) {
+        specific_date_str = year.toString() + "-" + month.toString() + "-01";
+    } else {
+        specific_date_str = year.toString() + "-0" + month.toString() + "-01";
+    }
+
+    // console.log(typeof specific_date_str);
+
+    // console.log(specific_date_str);
+
+    const specific_date = new Date(specific_date_str);
+
+    let noOfDays = getDays(year, month);
+
+    append(noOfDays, specific_date);
+
+    const print_cal = cal.map((element) => {
+        // // var g_element = element;
+        // let weeks = 0;
+        // while (weeks - cal.length != 0) {
+        //     for (let i = 0; i % 7 != 0; i++) {
+        //         var week = "";
+        //         if (element === 0) {
+        //             week += "  ";
+        //         } else {
+        //             week += " " + element.toString;
+        //         }
+        //     }
+        //     week += "<br>";
+        //     weeks += 1;
+        // }
+
+        // cal_p.innerText = week;
+    })
+
+    // console.log(cal);
+});
