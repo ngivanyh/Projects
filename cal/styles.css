@@ -11,3 +11,15 @@ h1 {
 .input-box {
     width: 100px;
 }
+
+#cal_header {
+    font-size: 20px;
+    margin: 10px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+}
+
