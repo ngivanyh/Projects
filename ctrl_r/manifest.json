@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "name": "Ctrl+R",
+    "description": "Add the reading time to Chrome Extension documentation articles",
+    "version": "1.0",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+          "js": [
+            "js/script.js"
+          ],
+          "matches": ["<all_urls>"]
+        }
+      ]
+}
