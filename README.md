@@ -1,1 +1,1 @@
-#LearnWeb, a github repo where i store my bad html, css, and js projects
+LearnWeb, a github repo where i store my bad html, css, and js projects
