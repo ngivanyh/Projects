@@ -1,0 +1,22 @@
+* {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#elevator1 {
+    margin: 50px;
+}
+
+#elevator2 {
+    margin: 50px;
+}
+
+#elevator3 {
+    margin: 50px;
+}
+
+.cur_floor {
+    margin: 10px;
+}
