@@ -9,6 +9,7 @@ const request_floor = document.getElementById("select_floor");
 const e1text = "Elevator 1 Current Floor: ";
 const e2text = "Elevator 2 Current Floor: ";
 const e3text = "Elevator 3 Current Floor: ";
+const curtext = "Current Floor: ";
 
 const max_floor = 10;
 const min_floor = 1;
@@ -20,20 +21,29 @@ const getRandomFloor  = (min, max) => {
 }
 
 const compare = (elevator1, elevator2, elevator3, requested_floor, cur_floor) => {
-    var elevators_to_usr = [elevator1 - cur_floor, elevator2 - cur_floor, elevator3 - cur_floor];
+    // usr_floor.innerHTML.replace(/curtext /g, '')
+    const e1textnum = elevator1.replace(e1text, '');
+    const e2textnum = elevator2.replace(e2text, '');
+    const e3textnum = elevator3.replace(e3text, '');
 
-    let usr_to_destination = requested_floor - cur_floor;
+    const e1floor = parseInt(e1textnum) - cur_floor;
+    const e2floor = parseInt(e2textnum) - cur_floor;
+    const e3floor = parseInt(e3textnum) - cur_floor;
+    console.log(e1floor);
+
+    var elevators_to_usr = [e1floor, e2floor, e3floor];
+
+    console.log(elevators_to_usr[0]);
 
     for (let i = 0; i < 3; i++) {
         if (elevators_to_usr[i] < 0) {
             elevators_to_usr[i] *= -1;
-            elevators_to_usr += usr_to_destination;
         }
     }
 
     let cloest_to_usr = Math.min(...elevators_to_usr);
 
-    return cloest_to_usr;
+    return [cloest_to_usr, elevators_to_usr];
 
 };
 
@@ -41,32 +51,34 @@ const goToFloor = (requested_floor, current_floor) => {
     if (requested_floor === current_floor || isNaN(requested_floor) || requested_floor > 10 || requested_floor < 1) {
         return;
     } else {
-        let cloest = compare(elevator1_cur_floor, elevator2_cur_floor, elevator3_cur_floor, requested_floor, current_floor);
+        let return_val = compare(elevator1_cur_floor.innerHTML, elevator2_cur_floor.innerHTML, elevator3_cur_floor.innerHTML, requested_floor, current_floor);
 
         for (let i = 0; i < 3; i++) {
-            if (elevators_to_usr[i] == closet) {
-                let elevator_code = i;
+            if (return_val[1][i] === return_val[0]) {
+                var elevator_code = i;
             }
         }
 
+        console.log(return_val);
+
         if (elevator_code === 0) {
-            usr_floor.innerHTML = "Current Floor: " + requested_floor.toString();
+            usr_floor.innerHTML = curtext + requested_floor.toString();
             elevator1_cur_floor.innerHTML = e1text + + requested_floor.toString();
         } else if (elevator_code === 1) {
-            usr_floor.innerHTML = "Current Floor: " + requested_floor.toString();
+            usr_floor.innerHTML = curtext + requested_floor.toString();
             elevator2_cur_floor.innerHTML = e2text + + requested_floor.toString();
         } else if (elevator_code === 2) {
-            usr_floor.innerHTML = "Current Floor: " + requested_floor.toString();
+            usr_floor.innerHTML = curtext + requested_floor.toString();
             elevator3_cur_floor.innerHTML = e3text + + requested_floor.toString();
         }
     }
 }
 
-usr_floor.innerHTML = "Current Floor: " + getRandomFloor(min_floor, max_floor);
+usr_floor.innerHTML = curtext + getRandomFloor(min_floor, max_floor);
 elevator1_cur_floor.innerHTML = e1text + getRandomFloor(min_floor, max_floor);
 elevator2_cur_floor.innerHTML = e2text + getRandomFloor(min_floor, max_floor);
 elevator3_cur_floor.innerHTML = e3text + getRandomFloor(min_floor, max_floor);
 
 btn.addEventListener("click", function() {
-    goToFloor(parseInt(request_floor.value), parseInt(usr_floor.innerHTML.replace(/Current Floor: /g, '')));
+    goToFloor(parseInt(request_floor.value), parseInt(usr_floor.innerHTML.replace(curtext, '')));
 });
