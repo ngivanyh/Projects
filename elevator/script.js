@@ -22,6 +22,8 @@ const getRandomFloor  = (min, max) => {
 
 const compare = (elevator1, elevator2, elevator3, requested_floor, cur_floor) => {
     // usr_floor.innerHTML.replace(/curtext /g, '')
+    let cloest_to_usr = [];
+
     const e1textnum = elevator1.replace(e1text, '');
     const e2textnum = elevator2.replace(e2text, '');
     const e3textnum = elevator3.replace(e3text, '');
@@ -41,7 +43,13 @@ const compare = (elevator1, elevator2, elevator3, requested_floor, cur_floor) =>
         }
     }
 
-    let cloest_to_usr = Math.min(...elevators_to_usr);
+    let cloest_val = Math.min(...elevators_to_usr);
+
+    for (let j = 0; j < 3; j++) {
+        if (elevators_to_usr[j] == cloest_val) {
+            cloest_to_usr.push(elevators_to_usr[j]);
+        }
+    }
 
     return [cloest_to_usr, elevators_to_usr];
 
@@ -54,8 +62,9 @@ const goToFloor = (requested_floor, current_floor) => {
         let return_val = compare(elevator1_cur_floor.innerHTML, elevator2_cur_floor.innerHTML, elevator3_cur_floor.innerHTML, requested_floor, current_floor);
 
         for (let i = 0; i < 3; i++) {
-            if (return_val[1][i] === return_val[0]) {
+            if (return_val[1][i] === return_val[0][i]) {
                 var elevator_code = i;
+                break;
             }
         }
 
@@ -74,10 +83,14 @@ const goToFloor = (requested_floor, current_floor) => {
     }
 }
 
+let e1randfloor = getRandomFloor(min_floor, max_floor);
+let e2randfloor = getRandomFloor(min_floor, max_floor);
+let e3randfloor = getRandomFloor(min_floor, max_floor);
+
 usr_floor.innerHTML = curtext + getRandomFloor(min_floor, max_floor);
-elevator1_cur_floor.innerHTML = e1text + getRandomFloor(min_floor, max_floor);
-elevator2_cur_floor.innerHTML = e2text + getRandomFloor(min_floor, max_floor);
-elevator3_cur_floor.innerHTML = e3text + getRandomFloor(min_floor, max_floor);
+elevator1_cur_floor.innerHTML = e1text + e1randfloor;
+elevator2_cur_floor.innerHTML = e2text + e2randfloor;
+elevator3_cur_floor.innerHTML = e3text + e3randfloor;
 
 btn.addEventListener("click", function() {
     goToFloor(parseInt(request_floor.value), parseInt(usr_floor.innerHTML.replace(curtext, '')));
