@@ -1,4 +1,3 @@
-// get all html tags i need to use
 const usr_floor = document.getElementById("usr_floor");
 const btn = document.getElementById("submit");
 const elevator1_cur_floor = document.getElementById("elevator1_cur_floor");
@@ -6,31 +5,20 @@ const elevator2_cur_floor = document.getElementById("elevator2_cur_floor");
 const elevator3_cur_floor = document.getElementById("elevator3_cur_floor");
 const request_floor = document.getElementById("select_floor");
 
-const e1text = "Elevator 1 Current Floor: ";
-const e2text = "Elevator 2 Current Floor: ";
-const e3text = "Elevator 3 Current Floor: ";
-const curtext = "Current Floor: ";
+const html_text = ["Elevator 1 Current Floor: ", "Elevator 2 Current Floor: ", "Elevator 3 Current Floor: ", "Current Floor: "];
 
-const max_floor = 10;
-const min_floor = 1;
-
-const getRandomFloor  = (min, max) => {
-    min = Math.floor(min);
-    max = Math.ceil(max);
+const getRandomFloor  = () => {
+    min = Math.floor(1);
+    max = Math.ceil(10);
     return Math.floor(Math.random() * (max - min + 1) + min).toString();
 }
 
-const compare = (elevator1, elevator2, elevator3, requested_floor, cur_floor) => {
-    // usr_floor.innerHTML.replace(/curtext /g, '')
+const compare = (elevator1, elevator2, elevator3, cur_floor) => {
     let cloest_to_usr = [];
 
-    const e1textnum = elevator1.replace(e1text, '');
-    const e2textnum = elevator2.replace(e2text, '');
-    const e3textnum = elevator3.replace(e3text, '');
-
-    const e1floor = parseInt(e1textnum) - cur_floor;
-    const e2floor = parseInt(e2textnum) - cur_floor;
-    const e3floor = parseInt(e3textnum) - cur_floor;
+    const e1floor = parseInt(elevator1.replace(html_text[0], '')) - cur_floor;
+    const e2floor = parseInt(elevator2.replace(html_text[1], '')) - cur_floor;
+    const e3floor = parseInt(elevator3.replace(html_text[2], '')) - cur_floor;
 
     var elevators_to_usr = [e1floor, e2floor, e3floor];
 
@@ -56,14 +44,9 @@ const goToFloor = (requested_floor, current_floor) => {
     if (requested_floor === current_floor || isNaN(requested_floor) || requested_floor > 10 || requested_floor < 1) {
         return;
     } else {
-        let return_val = compare(elevator1_cur_floor.innerHTML, elevator2_cur_floor.innerHTML, elevator3_cur_floor.innerHTML, requested_floor, current_floor);
+        const request_floor_str = requested_floor.toString();
+        let return_val = compare(elevator1_cur_floor.innerHTML, elevator2_cur_floor.innerHTML, elevator3_cur_floor.innerHTML, current_floor);
 
-        // for (let i = 0; i < 3; i++) {
-        //     if (return_val[1][i] === return_val[0][i]) {
-        //         var elevator_code = i;
-        //         break;
-        //     }
-        // }
         let i = 0;
 
         console.log(return_val[0][0]);
@@ -77,28 +60,23 @@ const goToFloor = (requested_floor, current_floor) => {
 
         console.log(return_val, elevator_code);
 
+        usr_floor.innerHTML = html_text[3] + request_floor_str;
+
         if (elevator_code === 0) {
-            usr_floor.innerHTML = curtext + requested_floor.toString();
-            elevator1_cur_floor.innerHTML = e1text + + requested_floor.toString();
+            elevator1_cur_floor.innerHTML = html_text[0] + request_floor_str;
         } else if (elevator_code === 1) {
-            usr_floor.innerHTML = curtext + requested_floor.toString();
-            elevator2_cur_floor.innerHTML = e2text + + requested_floor.toString();
+            elevator2_cur_floor.innerHTML = html_text[1] + request_floor_str;
         } else if (elevator_code === 2) {
-            usr_floor.innerHTML = curtext + requested_floor.toString();
-            elevator3_cur_floor.innerHTML = e3text + + requested_floor.toString();
+            elevator3_cur_floor.innerHTML = html_text[2] + request_floor_str;
         }
     }
 }
 
-let e1randfloor = getRandomFloor(min_floor, max_floor);
-let e2randfloor = getRandomFloor(min_floor, max_floor);
-let e3randfloor = getRandomFloor(min_floor, max_floor);
-
-usr_floor.innerHTML = curtext + getRandomFloor(min_floor, max_floor);
-elevator1_cur_floor.innerHTML = e1text + e1randfloor;
-elevator2_cur_floor.innerHTML = e2text + e2randfloor;
-elevator3_cur_floor.innerHTML = e3text + e3randfloor;
+usr_floor.innerHTML = html_text[3] + getRandomFloor();
+elevator1_cur_floor.innerHTML = html_text[0] + getRandomFloor();
+elevator2_cur_floor.innerHTML = html_text[1] + getRandomFloor();
+elevator3_cur_floor.innerHTML = html_text[2] + getRandomFloor();
 
 btn.addEventListener("click", function() {
-    goToFloor(parseInt(request_floor.value), parseInt(usr_floor.innerHTML.replace(curtext, '')));
+    goToFloor(parseInt(request_floor.value), parseInt(usr_floor.innerHTML.replace(html_text[3], '')));
 });
