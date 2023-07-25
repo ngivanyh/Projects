@@ -31,11 +31,8 @@ const compare = (elevator1, elevator2, elevator3, requested_floor, cur_floor) =>
     const e1floor = parseInt(e1textnum) - cur_floor;
     const e2floor = parseInt(e2textnum) - cur_floor;
     const e3floor = parseInt(e3textnum) - cur_floor;
-    console.log(e1floor);
 
     var elevators_to_usr = [e1floor, e2floor, e3floor];
-
-    console.log(elevators_to_usr[0]);
 
     for (let i = 0; i < 3; i++) {
         if (elevators_to_usr[i] < 0) {
@@ -61,14 +58,24 @@ const goToFloor = (requested_floor, current_floor) => {
     } else {
         let return_val = compare(elevator1_cur_floor.innerHTML, elevator2_cur_floor.innerHTML, elevator3_cur_floor.innerHTML, requested_floor, current_floor);
 
-        for (let i = 0; i < 3; i++) {
-            if (return_val[1][i] === return_val[0][i]) {
-                var elevator_code = i;
-                break;
-            }
+        // for (let i = 0; i < 3; i++) {
+        //     if (return_val[1][i] === return_val[0][i]) {
+        //         var elevator_code = i;
+        //         break;
+        //     }
+        // }
+        let i = 0;
+
+        console.log(return_val[0][0]);
+
+        while (return_val[1][i] != return_val[0][0]) {
+            console.log(return_val[1][i]);
+            i++
         }
 
-        console.log(return_val);
+        let elevator_code = i; 
+
+        console.log(return_val, elevator_code);
 
         if (elevator_code === 0) {
             usr_floor.innerHTML = curtext + requested_floor.toString();
