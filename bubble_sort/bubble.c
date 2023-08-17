@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     }
 
     // printf("A");
-    print_array(sort_array, total_size);
+    // print_array(sort_array, total_size);
 
 
     while (sorted(sort_array, loop_cnt) != 1)
@@ -57,7 +57,7 @@ int sort(int numbers[], int length)
         }
 
         // printf("B");
-        print_array(numbers, length);
+        // print_array(numbers, length);
     }
 
     return *numbers;
