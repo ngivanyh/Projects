@@ -12,14 +12,14 @@ int main(int argc, char **argv)
     int loop_cnt = total_size - 1;
     int sort_array[total_size];
 
-    printf("%i %i", total_size, loop_cnt);
+    // printf("%i %i", total_size, loop_cnt);
 
     for (int i = 0; i < total_size; i++)
     {
         sort_array[i] = atoi(argv[i + 1]);
     }
 
-    printf("A");
+    // printf("A");
     print_array(sort_array, total_size);
 
 
@@ -28,10 +28,10 @@ int main(int argc, char **argv)
         sort(sort_array, loop_cnt);
     }
 
-    printf("C");
+    // printf("C");
     print_array(sort_array, total_size);
 
-    printf("\n");
+    // printf("\n");
 }
 
 int sort(int numbers[], int length)
@@ -44,19 +44,19 @@ int sort(int numbers[], int length)
         cur_num = numbers[i];
         next_num = numbers[i + 1];
 
-        printf("    cn %i nn %i    ", cur_num, next_num);
+        // printf("    cn %i nn %i    ", cur_num, next_num);
 
         if (numbers[i] > numbers[i + 1])
         {
-            printf("    111cur_index %i 111next_index %i    ", numbers[i], numbers[i + 1]);
+            // printf("    111cur_index %i 111next_index %i    ", numbers[i], numbers[i + 1]);
 
             numbers[i] = next_num;
             numbers[i + 1] = cur_num;
 
-            printf("    cur_index %i next_index %i    ", numbers[i], numbers[i + 1]);
+            // printf("    cur_index %i next_index %i    ", numbers[i], numbers[i + 1]);
         }
 
-        printf("B");
+        // printf("B");
         print_array(numbers, length);
     }
 
@@ -75,7 +75,7 @@ int sorted(int numbers[], int length)
         }
     }
 
-    printf("    sorted    ");
+    // printf("    sorted    ");
     sorted = 1;
     return sorted;
 }
@@ -84,6 +84,6 @@ void print_array(int array[], int length)
 {
     for (int i = 0; i < length; i++)
     {
-        printf("%i", array[i]);
+        printf("%i\n", array[i]);
     }
 }
