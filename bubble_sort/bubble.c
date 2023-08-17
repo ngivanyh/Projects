@@ -2,41 +2,79 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-bool is_num(char **input, int length);
-int sort(int numbers);
+int sort(int numbers[], int length);
+bool sorted(int numbers[], int length);
+void print_array(int array[], int length);
 
 int main(int argc, char **argv)
 {
-    if (argc < 2 || is_num(argv, argc) == 0)
-    {
-        printf("Usage: ./bubble num1 num2 num3\n");
-        return 1;
-    }
-    else
-    {
-        int sort_array[argc - 1];
+    int total_size = argc - 1;
+    int sort_array[total_size];
 
-        for (int i = 1; i < argc - 1; i++)
-        {
-            sort_array[i - 1] = atoi(argv[i]);
-        }
-        printf("Hello world\n");
+    for (int i = 0; i < total_size; i++)
+    {
+        sort_array[i] = atoi(argv[i + 1]);
     }
+
+    do
+    {
+        sort(sort_array, total_size);
+    }
+    while (sorted(sort_array, total_size) == 0);
+
+    print_array(sort_array, total_size);
+
+    printf("\n");
 }
 
-bool is_num(char **input, int length)
+int sort(int numbers[], int length)
 {
-    bool is_num = true;
+    int cur_num;
+    int next_num;
 
-    for (int i = 1; i < length - 1; i++)
+    for (int i = 0; i < length; i++)
     {
-        if (atoi(input[i]) == 0)
+        cur_num = numbers[i];
+        next_num = numbers[i + 1];
+
+        if (numbers[i] > numbers[i + 1])
         {
-            break;
-            is_num = false;
-            return is_num;
+            printf("    111cur_index %i 111next_index %i    ", numbers[i], numbers[i + 1]);
+
+            numbers[i] = next_num;
+            numbers[i + 1] = cur_num;
+
+            printf("    cur_index %i next_index %i    ", numbers[i], numbers[i + 1]);
+        }
+
+        print_array(numbers, length);
+    }
+
+    return *numbers;
+}
+
+bool sorted(int numbers[], int length)
+{
+    bool sorted = false;
+
+    for (int i = 0; i < length; i++)
+    {
+        if (!(numbers[i] <= numbers[i + 1]))
+        {
+            printf("    not sorted    ");
+            return sorted;
         }
     }
 
-    return is_num;
+    printf("    sorted    ");
+    sorted = true;
+    return sorted;
+}
+
+void print_array(int array[], int length)
+{
+    for (int j = 0; j < length; j++)
+    {
+        printf("%i", array[j]);
+    }
 }
