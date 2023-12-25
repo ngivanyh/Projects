@@ -5,7 +5,7 @@ void add(snippet snippet)
     return;
 }
 
-void remove(snippet snippet)
+void del(snippet snippet)
 {
     return;
 }

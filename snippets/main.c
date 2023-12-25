@@ -5,7 +5,7 @@
 
 const int func_cnt = 3;
 
-// Funcitons: add, remove, modify
+// Funcitons: add, delete, modify
 
 int main(int argc, char **argv)
 {
@@ -15,7 +15,7 @@ int main(int argc, char **argv)
         return 1;
     }
     
-    char *func[] = {"add", "remove", "modify"};
+    char *func[] = {"add", "delete", "modify"};
 
     if (strcmp(argv[1], func[0]) == 0)
     {
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
     }
     else if (strcmp(argv[1], func[1]) == 0)
     {
-        printf("remove\n");
+        printf("delete\n");
     }
     else if (strcmp(argv[1], func[2]) == 0)
     {

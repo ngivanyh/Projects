@@ -6,6 +6,6 @@ typedef struct
 
 
 void add(snippet snippet);
-void remove(snippet snippet);
+void delete(snippet snippet);
 void modify(snippet snippet);
 snippet find(char* name);
