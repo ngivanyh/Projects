@@ -1,8 +1,18 @@
-#include <snippets.h>
+#include "snippets.h"
+#include <stdio.h>
+#include <string.h>
 
 void add(snippet snippet)
 {
-    return;
+    FILE *snippet_file = fopen("snippets.txt", "w");
+
+    if (snippet_file == NULL)
+    {
+        printf("Error occured during fopen.");
+        return;
+    }
+
+    fwrite(snippet.content, strlen(snippet.content), 1, snippet_file);
 }
 
 void del(snippet snippet)
