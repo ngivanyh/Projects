@@ -5,7 +5,7 @@ typedef struct
 } snippet;
 
 
-void add(snippet snippet);
-void delete(snippet snippet);
-void modify(snippet snippet);
+void add(snippet input);
+void delete(snippet input);
+void modify(snippet input);
 snippet find(char* name);

@@ -1,7 +1,0 @@
-[Snippet]
-print(hello)
-
-[Snippet2]
-i = 10
-
-'''will sort alphabetically'''

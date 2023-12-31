@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 {
     check_fargs(argc, 2);
     
-    if (argv[1][0] != '-' || strlen(argv[1]) < 2)
+    if (argv[1][0] != '-' || argc < 2)
     {
         printf("Nothing to do.\n");
         return 1;
@@ -24,6 +24,15 @@ int main(int argc, char **argv)
     {
         case 'a':
             printf("add\n");
+            check_fargs(argc, 4);
+
+            snippet input;
+
+            input.name = strcat(argv[2], "\n");
+            input.content = strcat(argv[3], "\n");
+            
+            add(input);
+
             break;
         case 'd':
             printf("delete\n");

@@ -1,2 +1,0 @@
-clang -c snippets.c && clang -c main.c
-clang snippets.o main.o -o main

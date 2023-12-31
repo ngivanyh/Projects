@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void add(snippet snippet)
+void add(snippet input)
 {
     FILE *snippet_file = fopen("snippets.txt", "w");
 
@@ -12,15 +12,22 @@ void add(snippet snippet)
         return;
     }
 
-    fwrite(snippet.content, strlen(snippet.content), 1, snippet_file);
+    int sizes_1 = strlen(input.name);
+    int sizes_2 = strlen(input.content);
+
+    printf("this is the add func\n");
+    fwrite(input.name, sizes_1, 1, snippet_file);
+    fwrite(input.content, sizes_2, 1, snippet_file);
+
+    fclose(snippet_file);
 }
 
-void del(snippet snippet)
+void del(snippet input)
 {
     return;
 }
 
-void modify(snippet snippet)
+void modify(snippet input)
 {
     return;
 }
