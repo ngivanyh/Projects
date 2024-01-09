@@ -1,20 +1,22 @@
-#include <stdio.h>
-#include <string.h>
 #include <ctype.h>
 #include "snippets.h"
 
 const int func_cnt = 3;
 
-int check_fargs(int argc, int threshold);
+bool check_fargs(int argc, int threshold);
 
 // Funcitons: add, delete, modify
 // next steps: make an online version with js (node) that also has a database
 
 int main(int argc, char **argv)
 {
-    check_fargs(argc, 2);
+    if (!check_fargs(argc, 2))
+    {
+        printf("E: Insufficient function arguments.\n");
+        return 1;
+    }
     
-    if (argv[1][0] != '-' || argc < 2)
+    if (argc < 2 || argv[1][0] != '-' )
     {
         printf("Nothing to do.\n");
         return 1;
@@ -45,19 +47,18 @@ int main(int argc, char **argv)
             break;
         
         default:
-            printf("E: Not a official function.\n");
+            printf("E: Not a function.\n");
             break;
     }
     
 }
 
-int check_fargs(int argc, int threshold)
+bool check_fargs(int argc, int threshold)
 {
     if (argc < threshold)
     {
-        printf("E: Insufficient function arguments.\n");
-        return 1;
+        return false;
     }
 
-    return 0;
+    return true;
 }
