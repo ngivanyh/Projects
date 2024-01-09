@@ -4,7 +4,7 @@
 
 void add(snippet input)
 {
-    FILE *snippet_file = fopen("snippets.txt", "w");
+    FILE *snippet_file = fopen("snippets.txt", "a");
 
     if (snippet_file == NULL)
     {
@@ -12,12 +12,9 @@ void add(snippet input)
         return;
     }
 
-    int sizes_1 = strlen(input.name);
-    int sizes_2 = strlen(input.content);
-
     printf("this is the add func\n");
-    fwrite(input.name, sizes_1, 1, snippet_file);
-    fwrite(input.content, sizes_2, 1, snippet_file);
+    fwrite(input.name, input.size_n, 1, snippet_file);
+    fwrite(input.content, input.size_c, 1, snippet_file);
 
     fclose(snippet_file);
 }
@@ -32,4 +29,10 @@ void modify(snippet input)
     return;
 }
 
-snippet find(char* name);
+char* find(char* name);
+
+void get_size(snippet* input)
+{
+    input->size_n = strlen(input->name);
+    input->size_c = strlen(input->content);
+}

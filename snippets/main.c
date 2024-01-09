@@ -28,9 +28,12 @@ int main(int argc, char **argv)
 
             snippet input;
 
-            input.name = strcat(argv[2], "\n");
-            input.content = strcat(argv[3], "\n");
-            
+            input.name = strcat(argv[2], "\n\n");
+            input.content = strcat(argv[3],"\n\n");
+            get_size(&input);
+
+            printf("%s", input.content);
+
             add(input);
 
             break;
