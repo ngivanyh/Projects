@@ -17,16 +17,15 @@ code {
 @tailwind utilities;
 
 @layer base {
-  .align_middle {
-    @apply grid h-screen place-items-center;
+  .txtarea {
+    @apply rounded-md resize-none dark:text-white dark:bg-zinc-800 w-4/5 text-center border-none focus:outline-none;
   }
 
-  .txtarea {
-    @apply rounded-md resize-none dark:text-white dark:bg-zinc-800 w-4/5 text-center border-none focus:outline-none align_middle;
+  .fileSelector {
+    @apply pl-10 text-white text-sm file:text-xl file:font-mono file:rounded-full file:border-none;
   }
 
   body {
-    @apply dark:text-white dark:bg-zinc-900 align_middle font-mono text-xl;
+    @apply dark:text-white dark:bg-zinc-900 font-mono text-xl grid h-screen place-content-center;
   }
-  
 }
