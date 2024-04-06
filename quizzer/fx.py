@@ -27,7 +27,7 @@ def getqcount(prompt, lenqa):
         except ValueError: pass
 
 def getdiff(prompt, qa, lenqa, qcount):
-    diffop = ['H', 'M', 'E']
+    diffop = ['H', 'M', 'E', 'N']
     while True:
         temp = ""
         try: 
