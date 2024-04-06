@@ -12,11 +12,19 @@ with open(sys.argv[1]) as QA:
 
 LENQA = len(qa)
 
-QCOUNT = fx.getqcount("QUESTION COUNT: ", LENQA)
-DIFF = input("Choose difficulty of questions (H/M/S/AH/AM/AS): ")
+qcountTRES = fx.getqcount("QUESTION COUNT: ", LENQA)
+diffRES = fx.getdiff("Choose difficulty of questions (H/M/E): ", qa, LENQA, qcountTRES)
 
+DIFF = diffRES[0]
 
-# fx.randomQ(qcount, DIFF, LENQA, qa)
+if qcountTRES > diffRES[1]:
+    QCOUNT = diffRES[1]
+else:
+    QCOUNT = qcountTRES
+
+q = fx.randomQ(QCOUNT, DIFF, LENQA, qa)
+
+fx.printq(q, QCOUNT)
 
 # print(random.randrange(0, len(qa)))
 
