@@ -24,7 +24,8 @@ else:
 
 q = fx.randomQ(QCOUNT, DIFF, LENQA, qa)
 
-fx.printq(q, QCOUNT)
+results = fx.qa(q, QCOUNT)
+fx.printresults(results[0], results[1])
 
 # print(random.randrange(0, len(qa)))
 
