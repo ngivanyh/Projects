@@ -1,4 +1,5 @@
-import csv, sys, fx
+import csv, sys
+from fx import *
 
 if len(sys.argv) < 2:
     print("Usage: python quizzer.py quizzes.csv")
@@ -12,20 +13,30 @@ with open(sys.argv[1]) as QA:
 
 LENQA = len(qa)
 
-qcountTRES = fx.getqcount("QUESTION COUNT: ", LENQA)
-diffRES = fx.getdiff("Choose difficulty of questions (H/M/E): ", qa, LENQA, qcountTRES)
+print("""
+ ██████  ██    ██ ██ ███████ ███████ ███████ ██████  
+██    ██ ██    ██ ██    ███     ███  ██      ██   ██ 
+██    ██ ██    ██ ██   ███     ███   █████   ██████  
+██ ▄▄ ██ ██    ██ ██  ███     ███    ██      ██   ██ 
+ ██████   ██████  ██ ███████ ███████ ███████ ██   ██ 
+    ▀▀                                               
+""")
+
+qcountTRES = getQCount("QUESTION COUNT: ", LENQA)
+diffRES = getDiff("Choose difficulty of questions (H/M/E/N): ", qa, LENQA, qcountTRES)
+TARGET = getTarget("Choose target score: ")
 
 DIFF = diffRES[0]
 
-if qcountTRES > diffRES[1]:
+if type(diffRES) is list and qcountTRES > diffRES[1]:
     QCOUNT = diffRES[1]
 else:
     QCOUNT = qcountTRES
 
-q = fx.randomQ(QCOUNT, DIFF, LENQA, qa)
+q = randomQ(QCOUNT, DIFF, LENQA, qa)
 
-results = fx.qa(q, QCOUNT)
-fx.printresults(results[0], results[1])
+results = asker(q, QCOUNT)
+printresults(results[0], results[1], TARGET)
 
 # print(random.randrange(0, len(qa)))
 
