@@ -7,7 +7,7 @@ if len(sys.argv) < 2:
 qa = []
 
 with open(sys.argv[1]) as QA:
-    reader = csv.DictReader(QA)
+    reader = csv.DictReader(QA, delimiter='\t')
     for row in reader:
         qa.append(row)
 
