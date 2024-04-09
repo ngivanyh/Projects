@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-int sort(int numbers[], int length);
-int sorted(int numbers[], int length);
+bool sort(int numbers[], int length);
+// int sorted(int numbers[], int length);
 void print_array(int array[], int length);
 
 int main(int argc, char **argv)
@@ -22,8 +22,7 @@ int main(int argc, char **argv)
     // printf("A");
     // print_array(sort_array, total_size);
 
-
-    while (sorted(sort_array, loop_cnt) != 1)
+    while (sort(sort_array, loop_cnt) != false)
     {
         sort(sort_array, loop_cnt);
     }
@@ -34,10 +33,11 @@ int main(int argc, char **argv)
     // printf("\n");
 }
 
-int sort(int numbers[], int length)
+bool sort(int numbers[], int length)
 {
     int cur_num;
     int next_num;
+    bool change = false;
 
     for (int i = 0; i < length; i++)
     {
@@ -52,6 +52,7 @@ int sort(int numbers[], int length)
 
             numbers[i] = next_num;
             numbers[i + 1] = cur_num;
+            change = true;
 
             // printf("    cur_index %i next_index %i    ", numbers[i], numbers[i + 1]);
         }
@@ -60,25 +61,25 @@ int sort(int numbers[], int length)
         // print_array(numbers, length);
     }
 
-    return *numbers;
+    return change;
 }
 
-int sorted(int numbers[], int length)
-{
-    int sorted = 0;
+// int sorted(int numbers[], int length)
+// {
+//     int sorted = 0;
 
-    for (int i = 0; i < length; i++)
-    {
-        if (!(numbers[i] <= numbers[i + 1]))
-        {
-            return sorted;
-        }
-    }
+//     for (int i = 0; i < length; i++)
+//     {
+//         if (!(numbers[i] <= numbers[i + 1]))
+//         {
+//             return sorted;
+//         }
+//     }
 
-    // printf("    sorted    ");
-    sorted = 1;
-    return sorted;
-}
+//     // printf("    sorted    ");
+//     sorted = 1;
+//     return sorted;
+// }
 
 void print_array(int array[], int length)
 {
