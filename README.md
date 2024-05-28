@@ -1,1 +1,3 @@
-IvaNG515/Projects, a github repo where i store my bad projects
+# IvaNG515/Projects
+
+here, some projects i left behind, some are completed, some are quite good (imo)
