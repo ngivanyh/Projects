@@ -8,6 +8,7 @@ words = []
 # syn = []
 temp = []
 search_dbs = ['n', 'adj', 'adv', 'v']
+found = False
 
 db = connect("./dict.db")
 cur = db.cursor()
@@ -66,8 +67,12 @@ for i in range(len(search_dbs)):
             # print(temp[i][l], pos)
             words.append(word_dict(temp[i][l], pos))
 
-print(words)
-
+if len(words) >= 1:
+    print(words)
+    found = True
+else:
+    print("Not found")
+    found = False
 
 # for j in range(len(words)):
 #     if len(words[j]) >= 1:
