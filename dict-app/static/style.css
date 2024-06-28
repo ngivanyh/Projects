@@ -10,9 +10,23 @@ body {
 
 }
 
+h5 {
+    color: #D21404;
+    font-weight: 600;
+    margin: 0px;
+}
+
 #center_div {
     display: flex;
     justify-content: center;
+}
+
+.submit_btn {
+    height: 20px;
+    padding: 0px;
+    background-color: #191919;
+    color: #FFFFFF;
+    border: none;
 }
 
 #search {
@@ -26,13 +40,6 @@ body {
     margin-bottom: 4px;
     outline: none;
     color: #FFFFFF;
-}
-
-#notfound {
-    /* visibility: hidden; */
-    display: block;
-    margin: 0px;
-    color: #D0312D;
 }
 
 .text {
@@ -59,3 +66,15 @@ body {
     margin-top: 14px;
 }
 
+.span-2 {
+    color: #D21404;
+}
+
+.span-3 {
+    color: #0F52BA;
+}
+
+/* span-0 because of ip % 4 */
+.span-0 {
+    color: #028A0F;
+}
