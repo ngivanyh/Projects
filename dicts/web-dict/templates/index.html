@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 
 {% block body %}
-        <div>
+        <div style="text-align: center;">
             {{ not_found|safe }}
         </div>
         <div id="center_div">
             <form action="/word" method="post" id="word_form">
-                <textarea id="search" placeholder="Word" name="word"></textarea>
+                <input id="search" placeholder="Word" name="word">
                 <button type="submit" class="submit_btn">Search</button>
             </form>
         </div>
