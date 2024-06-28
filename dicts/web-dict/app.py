@@ -18,11 +18,11 @@ def merge(word_dict):
         full = (span + num)
 
         if not (word_dict[i]["pos"] == "noun"):
-            sentence_merge += (full + word_dict[i]["sentence"] + "</span>")
+            sentence_merge += (full + word_dict[i]["sentence"] + "</span><br>")
 
         pos_merge += (full + word_dict[i]["pos"] + "</span>")
-        def_merge += (full + word_dict[i]["definition"] + "</span>")
-        syn_merge += (full + word_dict[i]["synonyms"][0] + "</span>")
+        def_merge += (full + word_dict[i]["definition"] + "</span><br>")
+        syn_merge += (full + word_dict[i]["synonyms"][0] + "</span><br>")
 
     return [pos_merge, def_merge, sentence_merge, syn_merge]
 
