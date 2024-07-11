@@ -1,2 +1,5 @@
 **/.DS_Store
-typing
+typing/
+computer_knowledge_for_ai/
+**/__pycache__
+**/flask_session
