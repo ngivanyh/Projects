@@ -18,8 +18,11 @@ def root():
     if request.method == "POST":
         user_cmd = request.form.get("cmd")
         user_in = request.form.get("input")
-        cmd = run(user_cmd.split(), capture_output=True, input=user_in.encode())
-        output = cmd.stdout.decode()
+        try: 
+            cmd = run(user_cmd.split(), capture_output=True, input=user_in.encode())
+            output = cmd.stdout.decode()
+        except Exception:
+            output = "ERR"
 
         return redirect("/")
     else:
