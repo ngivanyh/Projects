@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, redirect
-from subprocess import run
+from flask import Flask, render_template
 import platform, socket
 
 app = Flask(__name__)
