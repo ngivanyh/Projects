@@ -1,51 +1,44 @@
-BASE64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+="
+BASE64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+PADDING = "="
 
 def encode():
-    global BASE64
-    
-    usr_in = input("String to encode: ")
+    usr_in = input("String to encode (UTF-8 encoding): ")
     
     bin_chars = ""; encoded = ""
-    
-    for char in usr_in:
-        a = str(bin(ord(char))).replace("0b", "")
+
+    for byte in bytes(usr_in, "utf-8"):
+        c = bin(byte).replace("0b", "").zfill(8)
         
-        if len(a) < 8:
-            lenDiff = 8 - len(a); zeroes = ""
-            for _ in range(lenDiff): zeroes += "0"
-            a = zeroes + a
-        
-        bin_chars += a
-        
-    start = 0; s = 0; bits = len(bin_chars)
-    
+        bin_chars += c
+
+    start, s = 0, 0; bits = len(bin_chars); end = 0
+
     for end in range(24, bits + 1, 24):
         for e in range(6, 24 + 1, 6):
             encoded += BASE64[int(bin_chars[start:end][s:e], 2)]
             s = e
         start = end; s = 0
-        
-    print(bin_chars)
-    
+
     if end != bits:
-        misssing_bits = bits - end; s = 0
-        bits_needed = 0; last_bits = bin_chars[end:bits]
-        
-        print(misssing_bits)
-        
-        while ((misssing_bits + bits_needed) % 6) != 0: bits_needed += 1; last_bits += "0"
+        missing_bits = bits - end; s = 0
+        last_bits = bin_chars[end:bits]
+                
+        while (len(last_bits) % 6) != 0: last_bits += "0"
         
         for e in range(6, len(last_bits) + 1, 6):
             encoded += BASE64[int(last_bits[s:e], 2)]
             s = e
 
-            encoded += BASE64[-1] * (((misssing_bits + bits_needed) // 6) - (misssing_bits // 6))
-            
-        
+        encoded += PADDING * (3 - missing_bits // 8)
+
     print(encoded)
 
 def decode():
-    pass
+    usr_in = input("String to decode (UTF-8 encoding): ")
+    padding = usr_in.count("="); usr_in = usr_in.replace("=", "")
+    
+    print(padding, usr_in)
+    
 
 def main():
     mode = input("Select one of two modes (e/d): ").lower()
