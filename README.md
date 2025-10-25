@@ -1,5 +1,3 @@
-# IvaNG515/Projects
+# Projects
 
-here, some projects i left behind, some are completed, some are quite good (imo)
-
-Just don't take them seriously, they were never meant to
+Random small programming projects. Most new projects will have their own separate github repo.
