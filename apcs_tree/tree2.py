@@ -21,7 +21,7 @@ class Node:
         return f"node(value={self.value}, childrens={self.children})"
     
     def hasSpace(self):
-        return False if (self.children == None) or (None not in self.children.values()) else True
+        return False if (self.children is None) or (None not in self.children.values()) else True
     
     def addChild(self, child: Node):
         if not self.hasSpace(): return None
@@ -33,18 +33,16 @@ class Node:
 
 node_list = [int(n) for n in input().split(" ")]
 
-tree = Node(node_list[0], None)
-cur = tree; connected_pairs = [] # without (n, 0) pairs
+cur = tree = Node(node_list[0], None)
+connected_pairs = [] # without (n, 0) pairs
 
 for n_val in node_list[1:]:
     if not cur.hasSpace():
-        while (cur := cur.parent) and (not cur.hasSpace()):
-            pass
-        if cur is None:
-            break
+        while (cur := cur.parent) and (not cur.hasSpace()): pass
+        if cur is None: break
         
     new = Node(n_val, cur)
     connected_pairs.append(cur.addChild(new))
     cur = new
 
-print(sum([abs(pair[0] - pair[1]) for pair in connected_pairs if 0 not in pair]))
+print(sum([abs(p - c) for p, c in connected_pairs if 0 not in (p, c)]))
