@@ -1,3 +1,3 @@
 # Projects
 
-Random small programming projects. Most new projects will have their own separate github repo.
+Random small programming projects. Mostly those which are too small to warrant a specially-made github repo.
