@@ -16,10 +16,7 @@ class Node:
                 1: None,
                 2: None
             }
-    
-    def __repr__(self):
-        return f"node(value={self.value}, childrens={self.children})"
-    
+            
     def hasSpace(self):
         return False if (self.children is None) or (None not in self.children.values()) else True
     
