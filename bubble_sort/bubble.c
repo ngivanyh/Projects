@@ -3,7 +3,6 @@
 #include <stdbool.h>
 
 bool sort(int numbers[], int length);
-// int sorted(int numbers[], int length);
 void print_array(int array[], int length);
 
 int main(int argc, char **argv)
@@ -22,10 +21,8 @@ int main(int argc, char **argv)
     // printf("A");
     // print_array(sort_array, total_size);
 
-    while (sort(sort_array, loop_cnt) != false)
-    {
-        sort(sort_array, loop_cnt);
-    }
+    while (!sort(sort_array, loop_cnt))
+        loop_cnt--;
 
     // printf("C");
     print_array(sort_array, total_size);
@@ -46,7 +43,7 @@ bool sort(int numbers[], int length)
 
         // printf("    cn %i nn %i    ", cur_num, next_num);
 
-        if (numbers[i] > numbers[i + 1])
+        if (cur_num > next_num)
         {
             // printf("    111cur_index %i 111next_index %i    ", numbers[i], numbers[i + 1]);
 
@@ -63,23 +60,6 @@ bool sort(int numbers[], int length)
 
     return change;
 }
-
-// int sorted(int numbers[], int length)
-// {
-//     int sorted = 0;
-
-//     for (int i = 0; i < length; i++)
-//     {
-//         if (!(numbers[i] <= numbers[i + 1]))
-//         {
-//             return sorted;
-//         }
-//     }
-
-//     // printf("    sorted    ");
-//     sorted = 1;
-//     return sorted;
-// }
 
 void print_array(int array[], int length)
 {
