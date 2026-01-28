@@ -1,12 +1,14 @@
 from math import floor
 
 # fancy input handling because it's python
-while True:
-    try:
-        sort_list = [int(n) for n in input().split(" ")]
-        break
-    except ValueError:
-        continue
+# while True:
+#     try:
+#         sort_list = [int(n) for n in input().split(" ")]
+#         break
+#     except ValueError:
+#         continue
+
+sort_list = [int(n) for n in open("numbers.txt").read().split(" ")]
 
 def merge(l1: list[int], l2: list[int]):
     out = []

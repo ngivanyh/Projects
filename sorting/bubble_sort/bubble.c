@@ -20,8 +20,12 @@ int main(int argc, char **argv)
 
     for (int i = 0; i < total_size; i++)
     {
-        printf("%i\n", sort_array[i]);
+        printf("%i ", sort_array[i]);
     }
+
+    printf("\n");
+
+    return 0;
 }
 
 bool sort(int numbers[], int length)
