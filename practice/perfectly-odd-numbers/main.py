@@ -29,10 +29,10 @@ while True:
     while int("".join(subtractive_perfect_num)) > int(num):
         str_sub_perf_num = "".join(subtractive_perfect_num)
         num_before_nines = 0
-        for i, n in enumerate(reversed(subtractive_perfect_num)):
-            if n != "9":
-                num_before_nines = i
-                break
+        for i in range(len(subtractive_perfect_num) - 1, -1, -1):
+            if subtractive_perfect_num[i] == "9": continue
+            num_before_nines = i
+            break
         # print(subtractive_perfect_num, num_before_nines)
         sub_amnt = 1 if num_before_nines == 0 else 2
         subtractive_perfect_num[num_before_nines] = DIGITS[(int(str_sub_perf_num[num_before_nines]) - sub_amnt + 10) % 10]
