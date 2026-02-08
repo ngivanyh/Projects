@@ -11,17 +11,13 @@ int main(int argc, char **argv)
     int sort_array[total_size];
 
     for (int i = 0; i < total_size; i++)
-    {
         sort_array[i] = atoi(argv[i + 1]);
-    }
 
     while (sort(sort_array, loop_cnt))
         ;
 
     for (int i = 0; i < total_size; i++)
-    {
         printf("%i ", sort_array[i]);
-    }
 
     printf("\n");
 

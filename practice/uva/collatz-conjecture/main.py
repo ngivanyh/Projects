@@ -10,7 +10,7 @@ def collatz(n, iterations):
     if n & 1:
         return collatz(3*n + 1, iterations)
 
-    return collatz(int(n / 2), iterations)
+    return collatz(n >> 1, iterations)
 
 while True:
     try:
