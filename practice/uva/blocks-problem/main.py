@@ -11,14 +11,17 @@ def find_block(blocks, block):
 
 
 def move(blocks, preposition, target, destination):
-    target_idx = find_block(target)
+    target_idx = find_block(blocks, target)
 
     if target_idx is None:
         print(f"Error: Cannot find target block of number {target}")
         return
 
-    _ = (blocks[block].append(block) for block in blocks[target_idx[0]][target_idx[1]:])
+    _ = [blocks[block].append(block) for block in blocks[target_idx[0]][target_idx[1] + 1:]]
     blocks[target_idx[0]] = blocks[target_idx[0]][target_idx[1]:]
+
+    if preposition == "onto":
+        pass # move everything above b to their original positions
 
 
 def pile(blocks, preposition, target, destination):
@@ -38,6 +41,9 @@ def main():
         action = command[0]
         preposition = command[2]
         target, destination = int(command[1]), int(command[3])
+
+        if target == destination:
+            continue
 
         print(target, destination)
 
