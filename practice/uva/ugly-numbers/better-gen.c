@@ -12,7 +12,7 @@ int main(void)
     numbers[0] = 1;
 
     ullong i2 = 0, i3 = 0, i5 = 0;
-    for (int i = 1; i < GENERATION_TARGET; ++i)
+    for (size_t i = 1; i < GENERATION_TARGET; ++i)
     {
         ullong candidates[3] = {
             numbers[i2] * 2,
@@ -27,7 +27,7 @@ int main(void)
         if (numbers[i] == candidates[2]) ++i5;
     }
 
-    printf("The 1500'th ugly number is %llu.\n", numbers[1499]);
+    printf("The %llu'th ugly number is %llu.\n", (ullong) GENERATION_TARGET, numbers[GENERATION_TARGET - 1]);
 }
 
 ullong min(ullong ns[], size_t length)
